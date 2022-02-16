@@ -1,0 +1,49 @@
+[package]
+name = "runtime-common"
+authors = [ "PureStake" ]
+description = "Common code shared between runtimes"
+edition = "2018"
+homepage = "https://moonbeam.network"
+license = "GPL-3.0-only"
+version = "0.8.0-dev"
+
+[dependencies]
+impl-trait-for-tuples = "0.2.1"
+log = "0.4"
+
+# Moonbeam
+pallet-asset-manager = { path = "../../pallets/asset-manager", optional = true, default-features = false }
+pallet-author-mapping = { path = "../../pallets/author-mapping", default-features = false }
+pallet-migrations = { path = "../../pallets/migrations", default-features = false }
+allychain-staking = { path = "../../pallets/allychain-staking", default-features = false }
+xcm-transactor = { path = "../../pallets/xcm-transactor", optional = true, default-features = false }
+
+# Axlib
+frame-support = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+frame-system = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+pallet-collective = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+sp-core = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+sp-runtime = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+sp-std = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+
+# Frontier
+pallet-evm = { git = "https://github.com/purestake/frontier", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+
+# Axiaaxc
+xcm = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1", optional = true, default-features = false }
+
+[features]
+std = [
+	"frame-support/std",
+	"pallet-asset-manager/std",
+	"pallet-author-mapping/std",
+	"pallet-evm/std",
+	"pallet-migrations/std",
+	"allychain-staking/std",
+	"sp-core/std",
+	"sp-runtime/std",
+	"sp-std/std",
+	"xcm-transactor/std",
+	"xcm/std",
+]
+xcm-support = [ "pallet-asset-manager", "xcm", "xcm-transactor" ]

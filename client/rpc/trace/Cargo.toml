@@ -1,0 +1,42 @@
+[package]
+name = "moonbeam-rpc-trace"
+authors = [ "PureStake" ]
+edition = "2018"
+homepage = "https://moonbeam.network"
+license = "GPL-3.0-only"
+repository = "https://github.com/PureStake/moonbeam/"
+version = "0.6.0"
+
+[dependencies]
+ethereum = { version = "0.11.1", features = [ "with-codec" ] }
+ethereum-types = "0.12.1"
+futures = { version = "0.3" }
+jsonrpc-core = "18.0.0"
+serde = { version = "1.0", features = [ "derive" ] }
+sha3 = "0.9"
+tokio = { version = "1.10", features = [ "sync", "time" ] }
+tracing = "0.1.25"
+
+# Moonbeam
+moonbeam-client-evm-tracing = { path = "../../evm-tracing" }
+moonbeam-rpc-core-trace = { path = "../../rpc-core/trace" }
+moonbeam-rpc-core-types = { path = "../../rpc-core/types" }
+moonbeam-rpc-primitives-debug = { path = "../../../primitives/rpc/debug" }
+
+# Axlib
+sc-client-api = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sc-network = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sc-utils = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-api = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-block-builder = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-blockchain = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-io = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-runtime = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-std = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-transaction-pool = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+
+# Frontier
+fc-consensus = { git = "https://github.com/purestake/frontier", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+fc-rpc = { git = "https://github.com/purestake/frontier", branch = "moonbeam-axiaaxc-v0.9.15-1", features = [ "rpc_binary_search_estimate" ] }
+fc-rpc-core = { git = "https://github.com/purestake/frontier", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+fp-rpc = { git = "https://github.com/purestake/frontier", branch = "moonbeam-axiaaxc-v0.9.15-1" }

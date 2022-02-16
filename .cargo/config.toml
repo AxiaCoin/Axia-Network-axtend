@@ -1,0 +1,9 @@
+[alias]
+moonbase = " build --release -p moonbeam --no-default-features --features moonbase-native"
+moonbase-benchmarks = " build --release -p moonbeam --no-default-features --features moonbase-runtime-benchmarks"
+moonbase-betanet = " build --release -p moonbeam --no-default-features --features moonbase-native,betanet-native"
+moonriver = " build --release -p moonbeam --no-default-features --features moonriver-native"
+moonriver-betanet = " build --release -p moonbeam --no-default-features --features moonriver-native,betanet-native"
+moonriver-axctest = " build --release -p moonbeam --no-default-features --features moonriver-native,axctest-native"
+moonbeam = " build --release -p moonbeam --no-default-features --features moonbeam-native"
+moonbeam-betanet = " build --release -p moonbeam --no-default-features --features moonbeam-native,betanet-native"

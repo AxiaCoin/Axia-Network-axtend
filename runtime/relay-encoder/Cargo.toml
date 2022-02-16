@@ -1,0 +1,48 @@
+[package]
+name = "moonbeam-relay-encoder"
+authors = [ "PureStake" ]
+edition = "2018"
+homepage = "https://moonbeam.network"
+license = "GPL-3.0-only"
+repository = "https://github.com/PureStake/moonbeam/"
+version = "0.1.0"
+
+[dependencies]
+
+# Moonbeam
+relay-encoder-precompiles = { path = "../../precompiles/relay-encoder/", default-features = false }
+xcm-primitives = { path = "../../primitives/xcm", default-features = false }
+
+# Axlib
+frame-system = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+pallet-staking = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+axia-scale-codec = { version = "2.0.0", default-features = false, features = [ "derive" ] }
+sp-runtime = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+sp-std = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", default-features = false }
+
+# Cumulus
+cumulus-primitives-core = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axiaaxc-v0.9.15", default-features = false }
+
+[dev-dependencies]
+frame-support = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+pallet-proxy = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+pallet-utility = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+
+axctest-runtime = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+axiaaxc-runtime = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+betanet-runtime = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+alphanet-runtime = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+
+[features]
+default = [ "std" ]
+std = [
+	"cumulus-primitives-core/std",
+	"frame-system/std",
+	"pallet-staking/std",
+	"axia-scale-codec/std",
+	"axia-scale-codec/std",
+	"relay-encoder-precompiles/std",
+	"sp-runtime/std",
+	"sp-std/std",
+	"xcm-primitives/std",
+]

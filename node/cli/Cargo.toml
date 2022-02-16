@@ -1,0 +1,57 @@
+[package]
+name = "moonbeam-cli"
+authors = [ "PureStake" ]
+edition = "2018"
+version = "0.19.1"
+
+[dependencies]
+log = "0.4.8"
+axia-scale-codec = "2.2"
+structopt = "0.3.8"
+
+# Moonbeam
+cli-opt = { package = "moonbeam-cli-opt", path = "../cli-opt", default-features = false }
+perf-test = { path = "../perf-test" }
+service = { package = "moonbeam-service", path = "../service", default-features = false }
+
+# Axlib
+frame-benchmarking-cli = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sc-cli = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sc-service = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sc-telemetry = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sc-tracing = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-core = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+sp-runtime = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+try-runtime-cli = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1", optional = true }
+
+# Cumulus / Nimbus
+cumulus-client-cli = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axiaaxc-v0.9.15" }
+cumulus-client-service = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axiaaxc-v0.9.15" }
+cumulus-primitives-core = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axiaaxc-v0.9.15" }
+nimbus-primitives = { git = "https://github.com/purestake/nimbus", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+
+# Axiaaxc
+axiaaxc-cli = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+axiaaxc-allychain = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+axiaaxc-primitives = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+axiaaxc-service = { git = "https://github.com/purestake/axiaaxc", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+
+[build-dependencies]
+axlib-build-script-utils = { git = "https://github.com/purestake/axlib", branch = "moonbeam-axiaaxc-v0.9.15-1" }
+
+[features]
+default = [ "moonbase-native", "moonbeam-native", "moonriver-native", "wasmtime", "alphanet-native" ]
+
+alphanet-native = [ "axiaaxc-service/alphanet-native" ]
+
+moonbase-native = [ "service/moonbase-native", "alphanet-native" ]
+moonbeam-native = [ "service/moonbeam-native" ]
+moonriver-native = [ "service/moonriver-native" ]
+
+moonbase-runtime-benchmarks = [ "service/moonbase-runtime-benchmarks" ]
+runtime-benchmarks = [ "service/runtime-benchmarks" ]
+try-runtime = [
+	"service/try-runtime",
+	"try-runtime-cli",
+]
+wasmtime = [ "sc-cli/wasmtime" ]
